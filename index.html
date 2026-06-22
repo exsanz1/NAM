@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <link rel="icon" type="image/png" href="assets/files/favicon.ico">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PT NAM SAE INDONESIA - Laboratorium Kalibrasi Terakreditasi KAN</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            DEFAULT: '#0B1E2D',
+                            light: '#0F2537',
+                            dark: '#071420',
+                        },
+                        gold: {
+                            DEFAULT: '#C5A880',
+                            dark: '#B3966E',
+                        },
+                        cream: '#F4F1EA',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        condensed: ['Oswald', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .hamburger-bg {
+            background-color: rgba(255, 255, 255, 0.16);
+        }
+        .hamburger-bg:hover {
+            background-color: rgba(255, 255, 255, 0.24);
+        }
+        .hamburger-open .line1 {
+            transform: rotate(45deg) translateY(8px);
+        }
+        .hamburger-open .line2 {
+            opacity: 0;
+            transform: translateX(-10px);
+        }
+        .hamburger-open .line3 {
+            transform: rotate(-45deg) translateY(-8px);
+        }
+        .mobile-menu {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            padding-top: 0;
+            padding-bottom: 0;
+            transition: max-height 0.35s ease, opacity 0.35s ease, padding 0.35s ease;
+        }
+        .mobile-menu.menu-open {
+            max-height: 620px;
+            opacity: 1;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+    </style>
+    <!-- Google Fonts untuk tipografi premium -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome untuk Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS Animation CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body class="bg-navy text-white font-sans antialiased selection:bg-gold selection:text-navy overflow-x-hidden">
+
+    <!-- NAVBAR -->
+    <header class="sticky top-0 z-50 bg-navy/95 backdrop-blur-md border-b border-white/5 py-4 px-6 md:px-12">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <!-- Brand Logo Area -->
+            <div class="flex items-center space-x-3">
+                <div class="bg-gold text-navy font-bold px-2 py-1 rounded text-sm font-condensed tracking-wider">NAM</div>
+                <div>
+                    <h1 class="text-sm font-bold tracking-wider font-condensed">PT NAM SAE INDONESIA</h1>
+                    <p class="text-[10px] text-gray-400 font-medium tracking-widest uppercase">Accredited • KAN</p>
+                </div>
+            </div>        <!-- Navigation Links -->            <!-- Navigation Links Desktop -->
+            <nav class="hidden lg:flex items-center space-x-8 text-sm font-medium tracking-wide">
+                <a href="#beranda" class="text-gold transition-colors">Beranda</a>
+                <a href="#tentang-kami" class="text-gray-300 hover:text-gold transition-colors">Tentang Kami</a>
+                <a href="#layanan" class="text-gray-300 hover:text-gold transition-colors">Layanan</a>
+                <a href="#lingkup" class="text-gray-300 hover:text-gold transition-colors">Lingkup Kalibrasi</a>
+                <a href="#pelanggan" class="text-gray-300 hover:text-gold transition-colors">Pelanggan</a>
+                <a href="#kontak" class="text-gray-300 hover:text-gold transition-colors">Kontak</a>
+            </nav>
+            <!-- CTA Button -->
+            <div class="hidden sm:block">
+                <a href="#kontak" class="bg-gold hover:bg-gold-dark text-navy font-semibold px-5 py-2 rounded text-sm transition-all duration-300 inline-block">
+                    Hubungi Kami
+                </a>
+            </div>
+            <!-- Hamburger Menu Button Mobile -->
+            <button id="hamburger-btn" class="lg:hidden flex flex-col items-center justify-center space-y-1.5 cursor-pointer rounded-full p-2 hamburger-bg transition-colors duration-300" aria-label="Buka menu navigasi" aria-expanded="false">
+                <span class="w-6 h-0.5 bg-white transition-all duration-300 line1"></span>
+                <span class="w-6 h-0.5 bg-white transition-all duration-300 line2"></span>
+                <span class="w-6 h-0.5 bg-white transition-all duration-300 line3"></span>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <nav id="mobile-menu" class="mobile-menu lg:hidden absolute top-full left-0 right-0 z-50 bg-navy/95 backdrop-blur-md border-b border-white/5 px-6 flex flex-col space-y-3 text-sm font-medium tracking-wide shadow-xl">
+            <a href="#beranda" class="text-gold hover:text-gold-dark transition-colors py-2">Beranda</a>
+            <a href="#tentang-kami" class="text-gray-300 hover:text-gold transition-colors py-2">Tentang Kami</a>
+            <a href="#layanan" class="text-gray-300 hover:text-gold transition-colors py-2">Layanan</a>
+            <a href="#lingkup" class="text-gray-300 hover:text-gold transition-colors py-2">Lingkup Kalibrasi</a>
+            <a href="#pelanggan" class="text-gray-300 hover:text-gold transition-colors py-2">Pelanggan</a>
+            <a href="#kontak" class="text-gray-300 hover:text-gold transition-colors py-2">Kontak</a>
+            <a href="#kontak" class="bg-gold hover:bg-gold-dark text-navy font-semibold px-5 py-2 rounded text-sm transition-all duration-300 inline-block text-center mt-2">
+                Hubungi Kami
+            </a>
+        </nav>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="beranda" class="relative min-h-[90vh] flex items-center bg-cover bg-center px-6 md:px-12 py-20 pb-40 md:pb-20" style="background-image: linear-gradient(rgba(11, 30, 45, 0.85), rgba(11, 30, 45, 0.95)), url('https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&q=80');">
+        <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div class="lg:col-span-8 space-y-6" data-aos="fade-up" data-aos-delay="200">
+                <p class="text-xs font-semibold uppercase tracking-widest text-gold border-l-2 border-gold pl-3">Terakreditasi KAN • SNI ISO/IEC 17025:2017</p>
+                <h2 class="text-5xl md:text-7xl font-bold font-condensed tracking-tight leading-none text-white">
+                    ACCURACY <br><span class="text-gold">FOR QUALITY</span>
+                </h2>
+                <p class="text-gray-300 max-w-xl text-base md:text-lg font-light leading-relaxed">
+                    Laboratorium kalibrasi terakreditasi KAN untuk instrumen industri Anda — akurat, tertelusur, dan tepercaya di seluruh Indonesia.
+                </p>
+                <div class="flex flex-wrap gap-4 pt-4">
+                    <a href="#layanan" class="bg-gold hover:bg-gold-dark text-navy font-semibold px-6 py-3 rounded text-sm transition-all flex items-center space-x-2 shadow-lg shadow-gold/10">
+                        <span>Lihat Layanan</span>
+                        <i class="fa-solid fa-chevron-right text-xs"></i>
+                    </a>
+                    <a href="#kontak" class="border border-white/20 hover:bg-white/5 font-semibold px-6 py-3 rounded text-sm transition-all">
+                        Hubungi Kami
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Stats Bar Overlay di Bagian Bawah Hero -->
+        <div class="absolute bottom-0 left-0 right-0 bg-navy-dark/60 border-t border-white/5 py-6 px-6 backdrop-blur-sm" data-aos="fade-up" data-aos-delay="400">
+            <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-center md:text-left">
+                <div>
+                    <h4 class="text-2xl md:text-3xl font-bold font-condensed text-gold">20+</h4>
+                    <p class="text-xs text-gray-400">Tahun Pengalaman</p>
+                </div>
+                <div>
+                    <h4 class="text-2xl md:text-3xl font-bold font-condensed text-gold">500+</h4>
+                    <p class="text-xs text-gray-400">Klien Aktif</p>
+                </div>
+                <div>
+                    <h4 class="text-2xl md:text-3xl font-bold font-condensed text-gold">15+</h4>
+                    <p class="text-xs text-gray-400">Parameter Kalibrasi</p>
+                </div>
+                <div>
+                    <h4 class="text-2xl md:text-3xl font-bold font-condensed text-gold">KAN</h4>
+                    <p class="text-xs text-gray-400">Terakreditasi Resmi</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 01: TENTANG KAMI -->
+    <section id="tentang-kami" class="bg-cream text-navy py-24 px-6 md:px-12">
+        <div class="max-w-7xl mx-auto space-y-16">
+            <div class="border-b border-navy/10 pb-4" data-aos="fade-right">
+                <span class="text-xs font-bold tracking-widest text-navy/40 font-condensed uppercase">01 — Tentang Kami</span>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                <div class="lg:col-span-6 space-y-6" data-aos="fade-right" data-aos-delay="200">
+                    <h3 class="text-4xl font-bold font-condensed tracking-tight leading-none text-navy">
+                        PT NAM SAE INDONESIA
+                    </h3>
+                    <p class="text-gray-700 text-sm md:text-base leading-relaxed">
+                        PT NAM Sae Indonesia adalah perusahaan jasa kalibrasi, inspeksi, dan sertifikasi yang telah dipercaya oleh ratusan industri di Indonesia. Kami hadir untuk memastikan setiap instrumen ukur yang digunakan oleh industri Anda berfungsi dengan tepat dan tertelusur ke Satuan Internasional (SI).
+                    </p>
+                    <p class="text-gray-700 text-sm md:text-base leading-relaxed">
+                        Laboratorium kami beroperasi sesuai standar internasional SNI ISO/IEC 17025:2017 dan diakreditasi oleh Komite Akreditasi Nasional (KAN), sehingga setiap sertifikat kalibrasi yang kami terbitkan diakui secara nasional dan internasional melalui mekanisme Mutual Recognition Arrangement (MRA).
+                    </p>
+                    
+                    <!-- 4 Poin Keunggulan -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 text-xs font-semibold">
+                        <div class="flex items-start space-x-3">
+                            <i class="fa-solid fa-award text-gold text-lg mt-0.5"></i>
+                            <div>
+                                <h5 class="text-navy">Terakreditasi KAN</h5>
+                                <p class="text-gray-500 font-normal">SNI ISO/IEC 17025:2017</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <i class="fa-solid fa-truck-ramp-box text-gold text-lg mt-0.5"></i>
+                            <div>
+                                <h5 class="text-navy">On-site & Off-site</h5>
+                                <p class="text-gray-500 font-normal">Laboratorium & Lapangan</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <i class="fa-solid fa-globe text-gold text-lg mt-0.5"></i>
+                            <div>
+                                <h5 class="text-navy">Berlaku Internasional</h5>
+                                <p class="text-gray-500 font-normal">Diakui via MRA APLAC/ILAC</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <i class="fa-solid fa-file-shield text-gold text-lg mt-0.5"></i>
+                            <div>
+                                <h5 class="text-navy">Laporan Tertelusur</h5>
+                                <p class="text-gray-500 font-normal">Ke standar nasional & SI</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Ilustrasi Komponen Kanan -->
+                <div class="lg:col-span-6 relative" data-aos="fade-left" data-aos-delay="200">
+                    <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80" alt="Laboratorium Instrumentasi" class="w-full h-[400px] object-cover rounded-lg shadow-xl">
+                    <div class="absolute -bottom-6 -left-6 bg-gold text-navy p-6 rounded-lg max-w-xs shadow-lg">
+                        <h4 class="text-xl font-bold font-condensed">KAN</h4>
+                        <p class="text-xs font-semibold opacity-80">Terakreditasi s/d 22 Feb 2027</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 02: LAYANAN KAMI -->
+    <section id="layanan" class="bg-navy-light py-24 px-6 md:px-12">
+        <div class="max-w-7xl mx-auto space-y-16">
+            <div class="border-b border-white/10 pb-4" data-aos="fade-up">
+                <span class="text-xs font-bold tracking-widest text-white/40 font-condensed uppercase">02 — Layanan Kami</span>
+            </div>
+
+            <div class="flex flex-col md:flex-row md:justify-between md:items-end gap-6" data-aos="fade-up" data-aos-delay="100">
+                <h3 class="text-4xl font-bold font-condensed tracking-tight max-w-md uppercase leading-tight">
+                    Solusi Teknis <br>Untuk Industri Anda
+                </h3>
+                <p class="text-gray-400 text-sm max-w-sm">
+                    Empat lini layanan terintegrasi untuk akurasi, keselamatan, dan keandalan operasional industri Anda.
+                </p>
+            </div>
+
+            <!-- Grid 4 Layanan Utama -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Layanan 1 -->
+                <div class="bg-navy p-8 rounded-lg border border-white/5 space-y-6 flex flex-col justify-between hover:border-gold/30 transition-all group" data-aos="fade-up" data-aos-delay="100">
+                    <div class="space-y-4">
+                        <span class="text-xs text-gold font-bold font-condensed">01</span>
+                        <h4 class="text-xl font-bold font-condensed tracking-wide uppercase group-hover:text-gold transition-colors">Laboratorium Kalibrasi</h4>
+                        <p class="text-gray-400 text-xs leading-relaxed">
+                            Layanan kalibrasi tertelusur untuk instrumen ukur di berbagai parameter teknis. Dilakukan oleh teknisi bersertifikat di laboratorium atau lokasi industri Anda.
+                        </p>
+                        <div class="flex flex-wrap gap-2 pt-2">
+                            <span class="bg-navy-light px-2 py-1 rounded text-[10px] text-gray-300">Suhu & Kelembaban</span>
+                            <span class="bg-navy-light px-2 py-1 rounded text-[10px] text-gray-300">Massa & Timbangan</span>
+                            <span class="bg-navy-light px-2 py-1 rounded text-[10px] text-gray-300">Tekanan & Vakum</span>
+                        </div>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80" alt="Kalibrasi" loading="lazy" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80';" class="w-full h-48 object-cover rounded mt-4 filter grayscale group-hover:grayscale-0 transition-all duration-500">
+                </div>
+
+                <!-- Layanan 2 -->
+                <div class="bg-navy p-8 rounded-lg border border-white/5 space-y-6 flex flex-col justify-between hover:border-gold/30 transition-all group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="space-y-4">
+                        <span class="text-xs text-gold font-bold font-condensed">02</span>
+                        <h4 class="text-xl font-bold font-condensed tracking-wide uppercase group-hover:text-gold transition-colors">Inspeksi & Sertifikasi</h4>
+                        <p class="text-gray-400 text-xs leading-relaxed">
+                            Pemeriksaan dan sertifikasi menyeluruh untuk keselamatan kerja dan kelayakan operasi peralatan industri sesuai regulasi K3 yang berlaku.
+                        </p>
+                        <div class="flex flex-wrap gap-2 pt-2">
+                            <span class="bg-navy-light px-2 py-1 rounded text-[10px] text-gray-300">K3 & Keselamatan Kerja</span>
+                            <span class="bg-navy-light px-2 py-1 rounded text-[10px] text-gray-300">Pesawat Uap Bejana Tekan</span>
+                            <span class="bg-navy-light px-2 py-1 rounded text-[10px] text-gray-300">Instalasi Listrik</span>
+                        </div>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80" alt="Inspeksi" class="w-full h-48 object-cover rounded mt-4 filter grayscale group-hover:grayscale-0 transition-all duration-500">
+                </div>
+
+                <!-- Layanan 3 -->
+                <div class="bg-navy p-8 rounded-lg border border-white/5 space-y-6 flex flex-col justify-between hover:border-gold/30 transition-all group" data-aos="fade-up" data-aos-delay="100">
+                    <div class="space-y-4">
+                        <span class="text-xs text-gold font-bold font-condensed">03</span>
+                        <h4 class="text-xl font-bold font-condensed tracking-wide uppercase group-hover:text-gold transition-colors">Thermography</h4>
+                        <p class="text-gray-400 text-xs leading-relaxed">
+                            Pemeriksaan termal non-destruktif menggunakan kamera inframerah untuk mendeteksi anomali panas pada peralatan dan instalasi listrik.
+                        </p>
+                        <div class="flex flex-wrap gap-2 pt-2">
+                            <span class="bg-navy-light px-2 py-1 rounded text-[10px] text-gray-300">Panel Listrik & Switchgear</span>
+                            <span class="bg-navy-light px-2 py-1 rounded text-[10px] text-gray-300">Motor & Generator</span>
+                        </div>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&q=80" alt="Thermography" class="w-full h-48 object-cover rounded mt-4 filter grayscale group-hover:grayscale-0 transition-all duration-500">
+                </div>
+
+                <!-- Layanan 4 -->
+                <div class="bg-navy p-8 rounded-lg border border-white/5 space-y-6 flex flex-col justify-between hover:border-gold/30 transition-all group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="space-y-4">
+                        <span class="text-xs text-gold font-bold font-condensed">04</span>
+                        <h4 class="text-xl font-bold font-condensed tracking-wide uppercase group-hover:text-gold transition-colors">Penjualan Alat Ukur</h4>
+                        <p class="text-gray-400 text-xs leading-relaxed">
+                            Penyediaan alat ukur dan instrumen industri berkualitas tinggi beserta suku cadang untuk mendukung kebutuhan pengukuran operasional Anda.
+                        </p>
+                        <div class="flex flex-wrap gap-2 pt-2">
+                            <span class="bg-navy-light px-2 py-1 rounded text-[10px] text-gray-300">Termometer & Sensor</span>
+                            <span class="bg-navy-light px-2 py-1 rounded text-[10px] text-gray-300">Pressure Gauge</span>
+                        </div>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81?auto=format&fit=crop&q=80" alt="Penjualan Alat Ukur" class="w-full h-48 object-cover rounded mt-4 filter grayscale group-hover:grayscale-0 transition-all duration-500">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 03: LINGKUP & KEMAMPUAN UKUR -->
+    <section id="lingkup" class="bg-white text-navy py-24 px-6 md:px-12">
+        <div class="max-w-7xl mx-auto space-y-12">
+            <div class="border-b border-navy/10 pb-4" data-aos="fade-right">
+                <span class="text-xs font-bold tracking-widest text-navy/40 font-condensed uppercase">03 — Lingkup Kalibrasi</span>
+            </div>
+            
+            <div class="flex flex-col lg:flex-row lg:justify-between lg:items-end gap-4" data-aos="fade-up">
+                <h3 class="text-4xl font-bold font-condensed tracking-tight uppercase">
+                    Parameter & <br>Kemampuan Ukur
+                </h3>
+                <p class="text-gray-500 text-xs max-w-sm">
+                    Seluruh kemampuan ukur tercantum dalam lampiran teknis (CMC) sertifikat akreditasi KAN kami.
+                </p>
+            </div>
+
+            <!-- Tabel Parameter Kompetensi -->
+            <div class="overflow-x-auto rounded-lg border border-gray-200 shadow-sm mt-8" data-aos="zoom-in" data-aos-delay="200">
+                <table class="w-full text-left text-xs border-collapse">
+                    <thead>
+                        <tr class="bg-navy text-white uppercase font-condensed tracking-wider">
+                            <th class="py-4 px-6 font-medium">Kategori</th>
+                            <th class="py-4 px-6 font-medium">Instrumen</th>
+                            <th class="py-4 px-6 font-medium">Rentang</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-100 font-medium">
+                        <tr class="hover:bg-gray-50">
+                            <td class="py-4 px-6 text-navy font-bold flex items-center space-x-2">
+                                <span class="w-1.5 h-1.5 bg-gold rounded-full"></span>
+                                <span>Suhu</span>
+                            </td>
+                            <td class="py-4 px-6 text-gray-600 font-normal">Termometer, RTD, Thermocouple, Infrared Thermometer, Oven, Furnace</td>
+                            <td class="py-4 px-6 text-gray-800 font-mono">-196°C s/d 1200°C</td>
+                        </tr>
+                        <tr class="bg-gray-50/50 hover:bg-gray-50">
+                            <td class="py-4 px-6 text-navy font-bold flex items-center space-x-2">
+                                <span class="w-1.5 h-1.5 bg-gold rounded-full"></span>
+                                <span>Massa</span>
+                            </td>
+                            <td class="py-4 px-6 text-gray-600 font-normal">Timbangan Analitik, Timbangan Industri, Anak Timbangan</td>
+                            <td class="py-4 px-6 text-gray-800 font-mono">1 mg s/d 5000 kg</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50">
+                            <td class="py-4 px-6 text-navy font-bold flex items-center space-x-2">
+                                <span class="w-1.5 h-1.5 bg-gold rounded-full"></span>
+                                <span>Tekanan</span>
+                            </td>
+                            <td class="py-4 px-6 text-gray-600 font-normal">Pressure Gauge, Manometer, Pressure Transmitter, Pressure Calibrator</td>
+                            <td class="py-4 px-6 text-gray-800 font-mono">0 s/d 700 bar</td>
+                        </tr>
+                        <tr class="bg-gray-50/50 hover:bg-gray-50">
+                            <td class="py-4 px-6 text-navy font-bold flex items-center space-x-2">
+                                <span class="w-1.5 h-1.5 bg-gold rounded-full"></span>
+                                <span>Listrik</span>
+                            </td>
+                            <td class="py-4 px-6 text-gray-600 font-normal">Multimeter, Clamp Meter, Power Analyzer, Insulation Tester, Earth Tester</td>
+                            <td class="py-4 px-6 text-gray-500 font-normal">Sesuai kemampuan alat</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50">
+                            <td class="py-4 px-6 text-navy font-bold flex items-center space-x-2">
+                                <span class="w-1.5 h-1.5 bg-gold rounded-full"></span>
+                                <span>Dimensi</span>
+                            </td>
+                            <td class="py-4 px-6 text-gray-600 font-normal">Micrometer, Caliper, Height Gauge, Bore Gauge, Dial Indicator</td>
+                            <td class="py-4 px-6 text-gray-800 font-mono">0 s/d 2000 mm</td>
+                        </tr>
+                        <tr class="bg-gray-50/50 hover:bg-gray-50">
+                            <td class="py-4 px-6 text-navy font-bold flex items-center space-x-2">
+                                <span class="w-1.5 h-1.5 bg-gold rounded-full"></span>
+                                <span>Kelembaban</span>
+                            </td>
+                            <td class="py-4 px-6 text-gray-600 font-normal">Hygrometer, Humidity Transmitter, Data Logger</td>
+                            <td class="py-4 px-6 text-gray-800 font-mono">0% s/d 100% RH</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50">
+                            <td class="py-4 px-6 text-navy font-bold flex items-center space-x-2">
+                                <span class="w-1.5 h-1.5 bg-gold rounded-full"></span>
+                                <span>Volume & Aliran</span>
+                            </td>
+                            <td class="py-4 px-6 text-gray-600 font-normal">Flow Meter, Pipet Volumetrik, Buret, Labu Ukur</td>
+                            <td class="py-4 px-6 text-gray-500 font-normal">Sesuai standar</td>
+                        </tr>
+                        <tr class="bg-gray-50/50 hover:bg-gray-50">
+                            <td class="py-4 px-6 text-navy font-bold flex items-center space-x-2">
+                                <span class="w-1.5 h-1.5 bg-gold rounded-full"></span>
+                                <span>Waktu & Frekuensi</span>
+                            </td>
+                            <td class="py-4 px-6 text-gray-600 font-normal">Stopwatch, Timer, Frequency Counter</td>
+                            <td class="py-4 px-6 text-gray-800 font-mono">0 s/d 1000 Hz</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 04: KEUNGGULAN KAMI -->
+    <section class="bg-navy py-24 px-6 md:px-12 border-t border-white/5">
+        <div class="max-w-7xl mx-auto space-y-16">
+            <div class="border-b border-white/10 pb-4" data-aos="fade-up">
+                <span class="text-xs font-bold tracking-widest text-white/40 font-condensed uppercase">04 — Keunggulan Kami</span>
+            </div>
+
+            <!-- Grid Keunggulan Utama -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-x-12 gap-y-10">
+                <div class="space-y-3" data-aos="fade-up" data-aos-delay="100">
+                    <h4 class="text-base font-bold font-condensed uppercase tracking-wide text-white">Tertelusur ke SI</h4>
+                    <p class="text-gray-400 text-xs leading-relaxed font-light">
+                        Seluruh hasil kalibrasi dapat ditelusuri ke Satuan Internasional (SI) melalui rantai ketelisuran tak terputus.
+                    </p>
+                </div>
+                <div class="space-y-3" data-aos="fade-up" data-aos-delay="200">
+                    <h4 class="text-base font-bold font-condensed uppercase tracking-wide text-white">Meminimalisir Risiko</h4>
+                    <p class="text-gray-400 text-xs leading-relaxed font-light">
+                        Kalibrasi rutin menjamin alat ukur bekerja dalam toleransi, mencegah cacat produksi dan kerugian operasional.
+                    </p>
+                </div>
+                <div class="space-y-3" data-aos="fade-up" data-aos-delay="300">
+                    <h4 class="text-base font-bold font-condensed uppercase tracking-wide text-white">Diakui Internasional</h4>
+                    <p class="text-gray-400 text-xs leading-relaxed font-light">
+                        Sertifikat kalibrasi diakui secara global melalui jaringan kerja sama internasional KAN.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 05: LOGO CLIENTS / PELANGGAN -->
+    <section id="pelanggan" class="bg-cream text-navy py-24 px-6 md:px-12">
+        <div class="max-w-7xl mx-auto space-y-12">
+            <div class="border-b border-navy/10 pb-4" data-aos="fade-right">
+                <span class="text-xs font-bold tracking-widest text-navy/40 font-condensed uppercase">05 — Pelanggan Kami</span>
+            </div>
+            
+            <h3 class="text-3xl font-bold font-condensed tracking-tight uppercase" data-aos="fade-up">Dipercaya oleh Industri Terkemuka</h3>
+            
+            <!-- Grid Pelanggan -->
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="bg-white py-4 px-4 text-center rounded shadow-sm flex items-center justify-center font-bold text-xs tracking-wide text-navy/70 border border-gray-100">PT Salim Ivomas Pratama Tbk (Indofood Group)</div>
+                <div class="bg-white py-4 px-4 text-center rounded shadow-sm flex items-center justify-center font-bold text-xs tracking-wide text-navy/70 border border-gray-100">PT Nippon Steel Chemical &amp; Material Indonesia</div>
+                <div class="bg-white py-4 px-4 text-center rounded shadow-sm flex items-center justify-center font-bold text-xs tracking-wide text-navy/70 border border-gray-100">PT HM Sampoerna</div>
+                <div class="bg-white py-4 px-4 text-center rounded shadow-sm flex items-center justify-center font-bold text-xs tracking-wide text-navy/70 border border-gray-100">PT ISM Bogasari Tbk</div>
+                <div class="bg-white py-4 px-4 text-center rounded shadow-sm flex items-center justify-center font-bold text-xs tracking-wide text-navy/70 border border-gray-100">PT Novartis Indonesia</div>
+                <div class="bg-white py-4 px-4 text-center rounded shadow-sm flex items-center justify-center font-bold text-xs tracking-wide text-navy/70 border border-gray-100">PT Hino Motors Manufacturing Indonesia (HMMI)</div>
+                <div class="bg-white py-4 px-4 text-center rounded shadow-sm flex items-center justify-center font-bold text-xs tracking-wide text-navy/70 border border-gray-100">PT Kalbe Farma Tbk</div>
+                <div class="bg-white py-4 px-4 text-center rounded shadow-sm flex items-center justify-center font-bold text-xs tracking-wide text-navy/70 border border-gray-100">PT Pegadaian</div>
+                <div class="bg-white py-4 px-4 text-center rounded shadow-sm flex items-center justify-center font-bold text-xs tracking-wide text-navy/70 border border-gray-100">PT Daewoong Biologics Indonesia</div>
+                <div class="bg-white py-4 px-4 text-center rounded shadow-sm flex items-center justify-center font-bold text-xs tracking-wide text-navy/70 border border-gray-100">PT Firmenich Indonesia</div>
+            </div>
+            <p class="text-[11px] text-gray-400 italic font-normal">* Dan ratusan mitra industri lainnya di seluruh Indonesia.</p>
+        </div>
+    </section>
+
+    <!-- SECTION 06: UNDUH DOKUMEN RESMI -->
+    <section class="bg-navy-light py-24 px-6 md:px-12 border-t border-white/5">
+        <div class="max-w-7xl mx-auto space-y-12">
+            <div class="border-b border-white/10 pb-4" data-aos="fade-up">
+                <span class="text-xs font-bold tracking-widest text-white/40 font-condensed uppercase">06 — Dokumen & Akreditasi</span>
+            </div>
+
+            <!-- Download Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-6">
+                <!-- Card 1 -->
+                <div class="bg-navy p-6 rounded-lg border border-white/5 flex flex-col justify-between hover:border-gold/30 transition-all group" data-aos="fade-right" data-aos-delay="100">
+                    <div class="flex justify-between items-start">
+                        <div class="bg-navy-light p-3 rounded text-gold"><i class="fa-solid fa-file-pdf text-xl"></i></div>
+                        <span class="text-[10px] text-gray-500 font-mono">PDF, 0.4 MB</span>
+                    </div>
+                    <div class="mt-8">
+                        <h4 class="text-sm font-bold tracking-wide text-white group-hover:text-gold transition-colors">Sertifikat Akreditasi KAN</h4>
+                        <p class="text-[11px] text-gray-500 mt-1">LP-IDN • Berlaku s/d 22 Feb 2027</p>
+                    </div>
+                    <a href="assets/files/sertifikat-kan.pdf" download="Sertifikat_Akreditasi_KAN.pdf" class="mt-6 border border-white/10 group-hover:border-gold group-hover:bg-gold group-hover:text-navy text-white text-center py-2 rounded text-xs font-semibold transition-all flex items-center justify-center space-x-2">
+                        <i class="fa-solid fa-download"></i> <span>Unduh Berkas</span>
+                    </a>
+                </div>
+                <!-- Card 2 -->
+                <div class="bg-navy p-6 rounded-lg border border-white/5 flex flex-col justify-between hover:border-gold/30 transition-all group" data-aos="fade-left" data-aos-delay="200">
+                    <div class="flex justify-between items-start">
+                        <div class="bg-navy-light p-3 rounded text-gold"><i class="fa-solid fa-file-lines text-xl"></i></div>
+                        <span class="text-[10px] text-gray-500 font-mono">PDF, 0.4 MB</span>
+                    </div>
+                    <div class="mt-8">
+                        <h4 class="text-sm font-bold tracking-wide text-white group-hover:text-gold transition-colors">Lampiran Teknis (CMC)</h4>
+                        <p class="text-[11px] text-gray-500 mt-1">Calibration & Measurement Capability</p>
+                    </div>
+                    <a href="assets/files/cmc-teknis.pdf" download="Lampiran_Teknis_CMC.pdf" class="mt-6 border border-white/10 group-hover:border-gold group-hover:bg-gold group-hover:text-navy text-white text-center py-2 rounded text-xs font-semibold transition-all flex items-center justify-center space-x-2">
+                        <i class="fa-solid fa-download"></i> <span>Unduh Berkas</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 07: KONTAK & REVISI DATA -->
+    <section id="kontak" class="bg-cream text-navy py-24 px-6 md:px-12">
+        <div class="max-w-7xl mx-auto space-y-12">
+            <div class="border-b border-navy/10 pb-4" data-aos="fade-right">
+                <span class="text-xs font-bold tracking-widest text-navy/40 font-condensed uppercase">07 — Kontak</span>
+            </div>
+
+            <h3 class="text-4xl font-bold font-condensed tracking-tight uppercase" data-aos="fade-up">Hubungi Kami</h3>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 pt-6">
+                <!-- Sisi Kiri: REVISI ALAMAT, TELP, EMAIL, JAM KERJA -->
+                <div class="lg:col-span-5 space-y-8 text-xs" data-aos="fade-right" data-aos-delay="200">
+                    <div class="space-y-4">
+                        <h4 class="text-sm font-bold text-gray-400 uppercase tracking-widest">Informasi Kontak</h4>
+                        <!-- Alamat Berdasarkan Keterangan Baru -->
+                        <div class="flex items-start space-x-4">
+                            <div class="bg-navy text-white p-2.5 rounded"><i class="fa-solid fa-location-dot"></i></div>
+                            <div>
+                                <h5 class="font-bold text-navy">Alamat</h5>
+                                <p class="text-gray-600 font-normal mt-0.5 leading-relaxed">
+                                    Jl. Erlangga 2 blok E No. 48 Pondok Timur Indah 2, Kel. Mustikasari, Kec. Mustika jaya, Kota Bekasi 17157
+                                </p>
+                            </div>
+                        </div>
+                        <!-- No Telepon Terkini -->
+                        <div class="flex items-start space-x-4">
+                            <div class="bg-navy text-white p-2.5 rounded"><i class="fa-solid fa-phone"></i></div>
+                            <div>
+                                <h5 class="font-bold text-navy">Telepon</h5>
+                                <p class="text-gray-600 font-normal mt-0.5 leading-relaxed">+62 21 8262 2955</p>
+                            </div>
+                        </div>
+                        <!-- Email Terkini -->
+                        <div class="flex items-start space-x-4">
+                            <div class="bg-navy text-white p-2.5 rounded"><i class="fa-solid fa-envelope"></i></div>
+                            <div>
+                                <h5 class="font-bold text-navy">Email</h5>
+                                <p class="text-gray-600 font-normal mt-0.5 leading-relaxed">nam.sae@yahoo.com</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- REVISI JAM OPERASIONAL -->
+                    <div class="space-y-3 pt-4 border-t border-navy/5">
+                        <h4 class="text-sm font-bold text-gray-400 uppercase tracking-widest">Jam Operasional</h4>
+                        <div class="flex justify-between font-medium border-b border-navy/5 pb-1">
+                            <span class="text-gray-600">Senin - Jumat</span>
+                            <span class="text-navy">08:00 - 17:00 WIB</span>
+                        </div>
+                        <div class="flex justify-between font-medium">
+                            <span class="text-gray-600">Sabtu & Minggu</span>
+                            <span class="text-red-600 font-bold">Tutup</span>
+                        </div>
+                    </div>
+
+                    <!-- Link Interaktif WhatsApp Terkini -->
+                    <div class="pt-4">
+                        <a href="https://wa.me/6282111870221" target="_blank" class="w-full bg-[#25D366] hover:bg-[#20ba5a] text-white text-center py-3 rounded-lg font-bold text-sm transition-all flex items-center justify-center space-x-3 shadow-md shadow-green-500/20">
+                            <i class="fa-brands fa-whatsapp text-xl"></i>
+                            <span>Chat WhatsApp Sekarang</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Sisi Kanan: Form Kirim Pesan -->
+                <div class="lg:col-span-7 bg-white p-8 rounded-lg border border-gray-100 shadow-sm space-y-4 text-xs font-medium" data-aos="fade-left" data-aos-delay="300">
+                    <h4 class="text-sm font-bold text-navy uppercase tracking-wide">Kirim Pesan</h4>
+                    <form id="contact-form" class="space-y-4" novalidate>
+                        <input type="hidden" name="access_key" value="9636ceb3-ce81-420f-a1bf-eb2f7a642b85">
+                        <input type="hidden" name="subject" value="Permintaan Kalibrasi dari Website NAM SAE INDONESIA">
+                        <div id="form-status" class="hidden rounded-md border px-4 py-3 text-sm"></div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div class="space-y-1.5">
+                                <label class="text-gray-500">Nama Lengkap</label>
+                                <input id="form-name" name="name" type="text" placeholder="Nama Anda" class="w-full border border-gray-200 rounded px-3 py-2 text-navy focus:outline-none focus:border-gold">
+                            </div>
+                            <div class="space-y-1.5">
+                                <label class="text-gray-500">Perusahaan</label>
+                                <input id="form-company" name="company" type="text" placeholder="Nama Perusahaan" class="w-full border border-gray-200 rounded px-3 py-2 text-navy focus:outline-none focus:border-gold">
+                            </div>
+                        </div>
+                        <div class="space-y-1.5">
+                            <label class="text-gray-500">Email</label>
+                            <input id="form-email" name="email" type="email" placeholder="budi@perusahaan.com" class="w-full border border-gray-200 rounded px-3 py-2 text-navy focus:outline-none focus:border-gold">
+                        </div>
+                        <div class="space-y-1.5">
+                            <label class="text-gray-500">Layanan Yang Dibutuhkan</label>
+                            <select id="form-service" name="service" class="w-full border border-gray-200 rounded px-3 py-2 text-navy bg-white focus:outline-none focus:border-gold">
+                                <option value="Kalibrasi Suhu">Kalibrasi Suhu</option>
+                                <option value="Kalibrasi Massa">Kalibrasi Massa</option>
+                                <option value="Kalibrasi Tekanan">Kalibrasi Tekanan</option>
+                                <option value="Inspeksi K3 Teknik">Inspeksi K3 Teknik</option>
+                            </select>
+                        </div>
+                        <div class="space-y-1.5">
+                            <label class="text-gray-500">Pesan</label>
+                            <textarea id="form-message" name="message" rows="4" placeholder="Tulis rincian pesan atau kebutuhan kalibrasi Anda di sini..." class="w-full border border-gray-200 rounded px-3 py-2 text-navy focus:outline-none focus:border-gold"></textarea>
+                        </div>
+                        <button type="submit" id="submit-btn" class="w-full bg-navy hover:bg-navy-dark text-white font-bold py-3 rounded tracking-wide transition-all uppercase">Kirim Permintaan</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-navy-dark border-t border-white/5 py-8 px-6 md:px-12 text-[11px] text-gray-500 font-normal">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center space-x-2">
+                <div class="bg-white/10 text-white font-bold px-1.5 py-0.5 rounded text-[10px]">NAM</div>
+                <p>© 2026 PT NAM Sae Indonesia • Terakreditasi KAN • SNI ISO/IEC 17025:2017</p>
+            </div>
+            <p>Bekasi, Jawa Barat, Indonesia</p>
+        </div>
+    </footer>
+
+    <!-- Floating Action Button (FAB) WhatsApp Terkini -->
+    <a href="https://wa.me/6282111870221" target="_blank" class="fixed bottom-6 right-6 z-50 bg-[#25D366] hover:bg-[#20ba5a] text-white p-4 rounded-full shadow-xl flex items-center justify-center transition-all duration-300 hover:scale-110">
+        <i class="fa-brands fa-whatsapp text-2xl"></i>
+    </a>
+
+    <!-- AOS Animation JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800, // Durasi transisi elemen (0.8 detik)
+            once: true,    // Animasi hanya berjalan 1 kali saat di-scroll pertama kali
+            offset: 120,   // Jarak piksel pemicu munculnya elemen dari bawah layar
+        });
+    </script>
+
+    <!-- Hamburger Menu Toggle Script -->
+    <script>
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        // Toggle menu visibility
+        hamburgerBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('menu-open');
+            hamburgerBtn.classList.toggle('hamburger-open');
+            const expanded = hamburgerBtn.classList.contains('hamburger-open');
+            hamburgerBtn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+        });
+
+        // Close menu when clicking on a link
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('menu-open');
+                hamburgerBtn.classList.remove('hamburger-open');
+                hamburgerBtn.setAttribute('aria-expanded', false);
+            });
+        });
+    </script>
+
+    <script>
+        const form = document.getElementById('contact-form');
+        const submitBtn = document.getElementById('submit-btn');
+        const statusBox = document.getElementById('form-status');
+
+        const setStatus = (message, type) => {
+            statusBox.textContent = message;
+            statusBox.classList.remove('hidden', 'border-red-300', 'bg-red-50', 'text-red-700', 'border-green-300', 'bg-green-50', 'text-green-700');
+            if (type === 'error') {
+                statusBox.classList.add('border-red-300', 'bg-red-50', 'text-red-700');
+            } else {
+                statusBox.classList.add('border-green-300', 'bg-green-50', 'text-green-700');
+            }
+        };
+
+        const validateEmail = (email) => {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        };
+
+        form.addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            const name = document.getElementById('form-name');
+            const email = document.getElementById('form-email');
+            const message = document.getElementById('form-message');
+
+            let hasError = false;
+            [name, email, message].forEach((field) => {
+                field.classList.remove('border-red-500');
+            });
+
+            if (!name.value.trim()) {
+                hasError = true;
+                name.classList.add('border-red-500');
+            }
+            if (!email.value.trim() || !validateEmail(email.value.trim())) {
+                hasError = true;
+                email.classList.add('border-red-500');
+            }
+            if (!message.value.trim()) {
+                hasError = true;
+                message.classList.add('border-red-500');
+            }
+
+            if (hasError) {
+                setStatus('Mohon lengkapi semua field wajib dengan benar sebelum mengirim.', 'error');
+                return;
+            }
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Mengirim...';
+
+            const formData = new FormData(form);
+
+            try {
+                const response = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    body: formData,
+                });
+                const result = await response.json();
+
+                if (result.success) {
+                    setStatus('Pesan berhasil dikirim! Kami akan segera menghubungi Anda.', 'success');
+                    form.reset();
+                } else {
+                    throw new Error(result.message || 'Gagal mengirim pesan.');
+                }
+            } catch (error) {
+                setStatus('Terjadi kesalahan saat mengirim. Silakan coba lagi.', 'error');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Kirim Permintaan';
+            }
+        });
+    </script>
+</body>
+</html>
