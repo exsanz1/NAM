@@ -580,9 +580,8 @@
                 <!-- Sisi Kanan: Form Kirim Pesan -->
                 <div class="lg:col-span-7 bg-white p-8 rounded-lg border border-gray-100 shadow-sm space-y-4 text-xs font-medium" data-aos="fade-left" data-aos-delay="300">
                     <h4 class="text-sm font-bold text-navy uppercase tracking-wide">Kirim Pesan</h4>
-                    <form id="contact-form" class="space-y-4" novalidate>
-                        <input type="hidden" name="access_key" value="9636ceb3-ce81-420f-a1bf-eb2f7a642b85">
-                        <input type="hidden" name="subject" value="Permintaan Kalibrasi dari Website NAM SAE INDONESIA">
+                    <form id="contact-form" class="space-y-4" novalidate action="https://formspree.io/f/xnjknzwe" method="POST" accept-charset="UTF-8">
+                        <input type="hidden" name="_subject" value="Permintaan Kalibrasi dari Website NAM SAE INDONESIA">
                         <div id="form-status" class="hidden rounded-md border px-4 py-3 text-sm"></div>
 
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -602,10 +601,11 @@
                         <div class="space-y-1.5">
                             <label class="text-gray-500">Layanan Yang Dibutuhkan</label>
                             <select id="form-service" name="service" class="w-full border border-gray-200 rounded px-3 py-2 text-navy bg-white focus:outline-none focus:border-gold">
-                                <option value="Kalibrasi Suhu">Kalibrasi Suhu</option>
-                                <option value="Kalibrasi Massa">Kalibrasi Massa</option>
-                                <option value="Kalibrasi Tekanan">Kalibrasi Tekanan</option>
-                                <option value="Inspeksi K3 Teknik">Inspeksi K3 Teknik</option>
+                                <option value="">Pilih layanan yang dibutuhkan</option>
+                                <option value="Laboratorium Kalibrasi">Laboratorium Kalibrasi</option>
+                                <option value="Inspeksi & Sertifikasi">Inspeksi & Sertifikasi</option>
+                                <option value="Thermography">Thermography</option>
+                                <option value="Penjualan Alat Ukur">Penjualan Alat Ukur</option>
                             </select>
                         </div>
                         <div class="space-y-1.5">
@@ -693,10 +693,11 @@
 
             const name = document.getElementById('form-name');
             const email = document.getElementById('form-email');
+            const service = document.getElementById('form-service');
             const message = document.getElementById('form-message');
 
             let hasError = false;
-            [name, email, message].forEach((field) => {
+            [name, email, service, message].forEach((field) => {
                 field.classList.remove('border-red-500');
             });
 
@@ -707,6 +708,10 @@
             if (!email.value.trim() || !validateEmail(email.value.trim())) {
                 hasError = true;
                 email.classList.add('border-red-500');
+            }
+            if (!service.value.trim()) {
+                hasError = true;
+                service.classList.add('border-red-500');
             }
             if (!message.value.trim()) {
                 hasError = true;
@@ -724,17 +729,20 @@
             const formData = new FormData(form);
 
             try {
-                const response = await fetch('https://api.web3forms.com/submit', {
+                const response = await fetch(form.action, {
                     method: 'POST',
                     body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
                 });
-                const result = await response.json();
 
-                if (result.success) {
+                if (response.ok) {
                     setStatus('Pesan berhasil dikirim! Kami akan segera menghubungi Anda.', 'success');
                     form.reset();
                 } else {
-                    throw new Error(result.message || 'Gagal mengirim pesan.');
+                    const result = await response.json().catch(() => ({}));
+                    throw new Error(result.error || 'Gagal mengirim pesan.');
                 }
             } catch (error) {
                 setStatus('Terjadi kesalahan saat mengirim. Silakan coba lagi.', 'error');
