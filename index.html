@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="id" class="scroll-smooth">
 <head>
-    <link rel="icon" type="image/png" href="assets/files/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="assets/files/favicon.ico">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PT NAM SAE INDONESIA - Laboratorium Kalibrasi Terakreditasi KAN</title>
@@ -18,10 +18,10 @@
                             dark: '#071420',
                         },
                         gold: {
-                            DEFAULT: '#C5A880',
-                            dark: '#B3966E',
+                            DEFAULT: '#00AEEF',
+                            dark: '#008BC5',
                         },
-                        cream: '#F4F1EA',
+                        cream: '#F3F8FB',
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
@@ -33,10 +33,10 @@
     </script>
     <style>
         .hamburger-bg {
-            background-color: rgba(255, 255, 255, 0.16);
+            background-color: rgba(11, 30, 45, 0.08);
         }
         .hamburger-bg:hover {
-            background-color: rgba(255, 255, 255, 0.24);
+            background-color: rgba(11, 30, 45, 0.14);
         }
         .hamburger-open .line1 {
             transform: rotate(45deg) translateY(8px);
@@ -62,6 +62,42 @@
             padding-top: 1rem;
             padding-bottom: 1rem;
         }
+        :root {
+            --ink: #0B1E2D;
+            --signal: #00AEEF;
+        }
+        body {
+            background: var(--ink);
+        }
+        .hero-grid {
+            background-image: linear-gradient(rgba(0, 174, 239, 0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 174, 239, 0.12) 1px, transparent 1px);
+            background-size: 54px 54px;
+            mask-image: linear-gradient(to bottom, black, transparent 88%);
+        }
+        .precision-panel {
+            background: rgba(7, 20, 32, 0.72);
+            border: 1px solid rgba(0, 174, 239, 0.4);
+            box-shadow: 0 22px 70px rgba(0, 0, 0, 0.28);
+            backdrop-filter: blur(12px);
+        }
+        .signal-pulse {
+            animation: signal-pulse 2.4s ease-in-out infinite;
+        }
+        @keyframes signal-pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(0, 174, 239, 0.3); }
+            50% { box-shadow: 0 0 0 8px rgba(0, 174, 239, 0); }
+        }
+        .focus-ring:focus-visible {
+            outline: 2px solid var(--signal);
+            outline-offset: 4px;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                scroll-behavior: auto !important;
+            }
+        }
     </style>
     <!-- Google Fonts untuk tipografi premium -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -75,16 +111,18 @@
 <body class="bg-navy text-white font-sans antialiased selection:bg-gold selection:text-navy overflow-x-hidden">
 
     <!-- NAVBAR -->
-    <header class="sticky top-0 z-50 bg-navy/95 backdrop-blur-md border-b border-white/5 py-4 px-6 md:px-12">
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-navy/10 py-4 px-6 md:px-12">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <!-- Brand Logo Area -->
-            <div class="flex items-center space-x-3">
-                <div class="bg-gold text-navy font-bold px-2 py-1 rounded text-sm font-condensed tracking-wider">NAM</div>
+            <a href="#beranda" class="flex items-center space-x-3 focus-ring" aria-label="Kembali ke beranda PT NAM Sae Indonesia">
+                <div class="flex h-10 w-10 items-center justify-center rounded-full bg-white p-1.5 shadow-lg shadow-cyan-500/10">
+                    <img src="assets/files/apple-touch-icon.png" alt="Logo NAM Sae Indonesia" class="h-full w-full object-contain">
+                </div>
                 <div>
-                    <h1 class="text-sm font-bold tracking-wider font-condensed">PT NAM SAE INDONESIA</h1>
+                    <h1 class="text-sm font-bold tracking-wider font-condensed text-navy">PT NAM SAE INDONESIA</h1>
                     <p class="text-[10px] text-gray-400 font-medium tracking-widest uppercase">Accredited • KAN</p>
                 </div>
-            </div>        <!-- Navigation Links -->            <!-- Navigation Links Desktop -->
+            </a>        <!-- Navigation Links -->            <!-- Navigation Links Desktop -->
             <nav class="hidden lg:flex items-center space-x-8 text-sm font-medium tracking-wide">
                 <a href="#beranda" class="text-gold transition-colors">Beranda</a>
                 <a href="#tentang-kami" class="text-gray-300 hover:text-gold transition-colors">Tentang Kami</a>
@@ -94,21 +132,23 @@
                 <a href="#kontak" class="text-gray-300 hover:text-gold transition-colors">Kontak</a>
             </nav>
             <!-- CTA Button -->
-            <div class="hidden sm:block">
-                <a href="#kontak" class="bg-gold hover:bg-gold-dark text-navy font-semibold px-5 py-2 rounded text-sm transition-all duration-300 inline-block">
-                    Hubungi Kami
+            <div class="hidden lg:block">
+                <a href="#kontak" class="focus-ring inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-[#00AEEF] bg-[#e8f7fc] px-4 py-2 text-sm font-semibold text-[#008BC5] shadow-sm shadow-cyan-500/10 transition-all duration-300 hover:bg-[#00AEEF] hover:text-white">
+                    <i class="fa-regular fa-file-lines text-xs"></i>
+                    <span>Minta Penawaran</span>
+                    <i class="fa-solid fa-arrow-right text-[10px]"></i>
                 </a>
             </div>
             <!-- Hamburger Menu Button Mobile -->
             <button id="hamburger-btn" class="lg:hidden flex flex-col items-center justify-center space-y-1.5 cursor-pointer rounded-full p-2 hamburger-bg transition-colors duration-300" aria-label="Buka menu navigasi" aria-expanded="false">
-                <span class="w-6 h-0.5 bg-white transition-all duration-300 line1"></span>
-                <span class="w-6 h-0.5 bg-white transition-all duration-300 line2"></span>
-                <span class="w-6 h-0.5 bg-white transition-all duration-300 line3"></span>
+                <span class="w-6 h-0.5 bg-navy transition-all duration-300 line1"></span>
+                <span class="w-6 h-0.5 bg-navy transition-all duration-300 line2"></span>
+                <span class="w-6 h-0.5 bg-navy transition-all duration-300 line3"></span>
             </button>
         </div>
 
         <!-- Mobile Navigation Menu -->
-        <nav id="mobile-menu" class="mobile-menu lg:hidden absolute top-full left-0 right-0 z-50 bg-navy/95 backdrop-blur-md border-b border-white/5 px-6 flex flex-col space-y-3 text-sm font-medium tracking-wide shadow-xl">
+        <nav id="mobile-menu" class="mobile-menu lg:hidden absolute top-full left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-navy/10 px-6 flex flex-col space-y-3 text-sm font-medium tracking-wide shadow-xl">
             <a href="#beranda" class="text-gold hover:text-gold-dark transition-colors py-2">Beranda</a>
             <a href="#tentang-kami" class="text-gray-300 hover:text-gold transition-colors py-2">Tentang Kami</a>
             <a href="#layanan" class="text-gray-300 hover:text-gold transition-colors py-2">Layanan</a>
@@ -122,7 +162,8 @@
     </header>
 
     <!-- HERO SECTION -->
-    <section id="beranda" class="relative min-h-[90vh] flex items-center bg-cover bg-center px-6 md:px-12 py-20 pb-40 md:pb-20" style="background-image: linear-gradient(rgba(11, 30, 45, 0.85), rgba(11, 30, 45, 0.95)), url('https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&q=80');">
+    <section id="beranda" class="relative min-h-[90vh] flex items-center bg-cover bg-center px-6 md:px-12 py-20 pb-40 md:pb-20 overflow-hidden" style="background-image: linear-gradient(rgba(11, 30, 45, 0.86), rgba(11, 30, 45, 0.96)), url('https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&q=80');">
+        <div class="hero-grid absolute inset-0 pointer-events-none opacity-70"></div>
         <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div class="lg:col-span-8 space-y-6" data-aos="fade-up" data-aos-delay="200">
                 <p class="text-xs font-semibold uppercase tracking-widest text-gold border-l-2 border-gold pl-3">Terakreditasi KAN • SNI ISO/IEC 17025:2017</p>
@@ -141,6 +182,33 @@
                         Hubungi Kami
                     </a>
                 </div>
+            </div>
+            <div class="lg:col-span-4 relative hidden lg:block" data-aos="fade-left" data-aos-delay="350">
+                <div class="precision-panel relative rounded-xl p-7 text-white">
+                    <div class="flex items-center justify-between border-b border-white/10 pb-5">
+                        <div class="flex items-center gap-3">
+                            <span class="signal-pulse h-3 w-3 rounded-full bg-gold"></span>
+                            <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-gold">Precision desk</span>
+                        </div>
+                        <span class="font-mono text-[10px] text-white/40">NAM / 2026</span>
+                    </div>
+                    <div class="py-7">
+                        <p class="text-xs uppercase tracking-widest text-white/45">Status laboratorium</p>
+                        <p class="mt-2 font-condensed text-4xl font-bold uppercase tracking-tight">Ready to measure</p>
+                        <p class="mt-3 text-xs leading-relaxed text-white/55">Satu titik ukur yang presisi membantu tim Anda mengambil keputusan dengan percaya diri.</p>
+                    </div>
+                    <div class="grid grid-cols-2 gap-3 border-t border-white/10 pt-5">
+                        <div>
+                            <p class="font-mono text-lg text-gold">99.8%</p>
+                            <p class="mt-1 text-[10px] uppercase tracking-wider text-white/40">Reliabilitas proses</p>
+                        </div>
+                        <div>
+                            <p class="font-mono text-lg text-gold">ISO 17025</p>
+                            <p class="mt-1 text-[10px] uppercase tracking-wider text-white/40">Standar layanan</p>
+                        </div>
+                    </div>
+                </div>
+                <p class="mt-4 text-right font-mono text-[10px] uppercase tracking-[0.2em] text-white/35">Traceability / Reliability / Control</p>
             </div>
         </div>
         
@@ -162,6 +230,42 @@
                 <div>
                     <h4 class="text-2xl md:text-3xl font-bold font-condensed text-gold">KAN</h4>
                     <p class="text-xs text-gray-400">Terakreditasi Resmi</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- QUICK START SECTION -->
+    <section class="bg-white text-navy px-6 py-16 md:px-12 md:py-20">
+        <div class="mx-auto max-w-7xl">
+            <div class="flex flex-col gap-5 border-b border-navy/10 pb-8 md:flex-row md:items-end md:justify-between" data-aos="fade-up">
+                <div>
+                    <p class="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-[#008BC5]">Mulai dari sini</p>
+                    <h3 class="max-w-xl font-condensed text-3xl font-bold uppercase leading-tight tracking-tight md:text-4xl">Dari kebutuhan ukur menjadi keputusan yang lebih pasti.</h3>
+                </div>
+                <p class="max-w-sm text-sm leading-relaxed text-gray-500">Proses kami dibuat sederhana agar tim Anda dapat bergerak cepat tanpa kehilangan ketelitian.</p>
+            </div>
+            <div class="grid grid-cols-1 divide-y divide-navy/10 pt-8 lg:grid-cols-3 lg:divide-x lg:divide-y-0" data-aos="fade-up" data-aos-delay="150">
+                <div class="flex gap-4 py-5 md:pr-8 md:py-2">
+                    <span class="font-mono text-sm text-[#00AEEF]">01</span>
+                    <div>
+                        <h4 class="font-condensed text-lg font-bold uppercase">Ceritakan kebutuhan</h4>
+                        <p class="mt-2 text-xs leading-relaxed text-gray-500">Sampaikan alat, parameter, atau lokasi yang ingin dikalibrasi.</p>
+                    </div>
+                </div>
+                <div class="flex gap-4 py-5 md:px-8 md:py-2">
+                    <span class="font-mono text-sm text-[#00AEEF]">02</span>
+                    <div>
+                        <h4 class="font-condensed text-lg font-bold uppercase">Kami siapkan solusi</h4>
+                        <p class="mt-2 text-xs leading-relaxed text-gray-500">Tim kami mengonfirmasi ruang lingkup, jadwal, dan estimasi layanan.</p>
+                    </div>
+                </div>
+                <div class="flex gap-4 py-5 md:pl-8 md:py-2">
+                    <span class="font-mono text-sm text-[#00AEEF]">03</span>
+                    <div>
+                        <h4 class="font-condensed text-lg font-bold uppercase">Terima hasil tertelusur</h4>
+                        <p class="mt-2 text-xs leading-relaxed text-gray-500">Dapatkan laporan dan sertifikat yang siap mendukung operasional Anda.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -232,7 +336,7 @@
     </section>
 
     <!-- SECTION 02: LAYANAN KAMI -->
-    <section id="layanan" class="bg-navy-light py-24 px-6 md:px-12">
+    <section id="layanan" class="bg-[#eaf5fa] text-navy py-24 px-6 md:px-12">
         <div class="max-w-7xl mx-auto space-y-16">
             <div class="border-b border-white/10 pb-4" data-aos="fade-up">
                 <span class="text-xs font-bold tracking-widest text-white/40 font-condensed uppercase">02 — Layanan Kami</span>
@@ -250,7 +354,7 @@
             <!-- Grid 4 Layanan Utama -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <!-- Layanan 1 -->
-                <div class="bg-navy p-8 rounded-lg border border-white/5 space-y-6 flex flex-col justify-between hover:border-gold/30 transition-all group" data-aos="fade-up" data-aos-delay="100">
+                <div class="bg-navy text-white p-8 rounded-lg border border-white/5 space-y-6 flex flex-col justify-between hover:border-gold/30 transition-all group" data-aos="fade-up" data-aos-delay="100">
                     <div class="space-y-4">
                         <span class="text-xs text-gold font-bold font-condensed">01</span>
                         <h4 class="text-xl font-bold font-condensed tracking-wide uppercase group-hover:text-gold transition-colors">Laboratorium Kalibrasi</h4>
@@ -267,7 +371,7 @@
                 </div>
 
                 <!-- Layanan 2 -->
-                <div class="bg-navy p-8 rounded-lg border border-white/5 space-y-6 flex flex-col justify-between hover:border-gold/30 transition-all group" data-aos="fade-up" data-aos-delay="200">
+                <div class="bg-navy text-white p-8 rounded-lg border border-white/5 space-y-6 flex flex-col justify-between hover:border-gold/30 transition-all group" data-aos="fade-up" data-aos-delay="200">
                     <div class="space-y-4">
                         <span class="text-xs text-gold font-bold font-condensed">02</span>
                         <h4 class="text-xl font-bold font-condensed tracking-wide uppercase group-hover:text-gold transition-colors">Inspeksi & Sertifikasi</h4>
@@ -284,7 +388,7 @@
                 </div>
 
                 <!-- Layanan 3 -->
-                <div class="bg-navy p-8 rounded-lg border border-white/5 space-y-6 flex flex-col justify-between hover:border-gold/30 transition-all group" data-aos="fade-up" data-aos-delay="100">
+                <div class="bg-navy text-white p-8 rounded-lg border border-white/5 space-y-6 flex flex-col justify-between hover:border-gold/30 transition-all group" data-aos="fade-up" data-aos-delay="100">
                     <div class="space-y-4">
                         <span class="text-xs text-gold font-bold font-condensed">03</span>
                         <h4 class="text-xl font-bold font-condensed tracking-wide uppercase group-hover:text-gold transition-colors">Thermography</h4>
@@ -300,7 +404,7 @@
                 </div>
 
                 <!-- Layanan 4 -->
-                <div class="bg-navy p-8 rounded-lg border border-white/5 space-y-6 flex flex-col justify-between hover:border-gold/30 transition-all group" data-aos="fade-up" data-aos-delay="200">
+                <div class="bg-navy text-white p-8 rounded-lg border border-white/5 space-y-6 flex flex-col justify-between hover:border-gold/30 transition-all group" data-aos="fade-up" data-aos-delay="200">
                     <div class="space-y-4">
                         <span class="text-xs text-gold font-bold font-condensed">04</span>
                         <h4 class="text-xl font-bold font-condensed tracking-wide uppercase group-hover:text-gold transition-colors">Penjualan Alat Ukur</h4>
@@ -350,64 +454,40 @@
                                 <span class="w-1.5 h-1.5 bg-gold rounded-full"></span>
                                 <span>Suhu</span>
                             </td>
-                            <td class="py-4 px-6 text-gray-600 font-normal">Termometer, RTD, Thermocouple, Infrared Thermometer, Oven, Furnace</td>
-                            <td class="py-4 px-6 text-gray-800 font-mono">-196°C s/d 1200°C</td>
+                            <td class="py-4 px-6 text-gray-600 font-normal">Incubator, Oven, Thermometer Display with Sensor, Termometer Cairan dalam Gelas, Infrared Thermometer</td>
+                            <td class="py-4 px-6 text-gray-800 font-mono">-30 °C s/d 500 °C</td>
                         </tr>
                         <tr class="bg-gray-50/50 hover:bg-gray-50">
                             <td class="py-4 px-6 text-navy font-bold flex items-center space-x-2">
                                 <span class="w-1.5 h-1.5 bg-gold rounded-full"></span>
                                 <span>Massa</span>
                             </td>
-                            <td class="py-4 px-6 text-gray-600 font-normal">Timbangan Analitik, Timbangan Industri, Anak Timbangan</td>
-                            <td class="py-4 px-6 text-gray-800 font-mono">1 mg s/d 5000 kg</td>
+                            <td class="py-4 px-6 text-gray-600 font-normal">Timbangan</td>
+                            <td class="py-4 px-6 text-gray-800 font-mono">0 g s/d 600 kg</td>
                         </tr>
                         <tr class="hover:bg-gray-50">
                             <td class="py-4 px-6 text-navy font-bold flex items-center space-x-2">
                                 <span class="w-1.5 h-1.5 bg-gold rounded-full"></span>
                                 <span>Tekanan</span>
                             </td>
-                            <td class="py-4 px-6 text-gray-600 font-normal">Pressure Gauge, Manometer, Pressure Transmitter, Pressure Calibrator</td>
-                            <td class="py-4 px-6 text-gray-800 font-mono">0 s/d 700 bar</td>
+                            <td class="py-4 px-6 text-gray-600 font-normal">Vacuum Gauge, Pressure Gauge Pneumatic & Hydraulic, Pressure Transmitter</td>
+                            <td class="py-4 px-6 text-gray-800 font-mono">-0.95 bar s/d 1000 bar</td>
                         </tr>
                         <tr class="bg-gray-50/50 hover:bg-gray-50">
                             <td class="py-4 px-6 text-navy font-bold flex items-center space-x-2">
                                 <span class="w-1.5 h-1.5 bg-gold rounded-full"></span>
-                                <span>Listrik</span>
+                                <span>Kelistrikan</span>
                             </td>
-                            <td class="py-4 px-6 text-gray-600 font-normal">Multimeter, Clamp Meter, Power Analyzer, Insulation Tester, Earth Tester</td>
-                            <td class="py-4 px-6 text-gray-500 font-normal">Sesuai kemampuan alat</td>
+                            <td class="py-4 px-6 text-gray-600 font-normal">DC/AC Voltage & Ampere Meter, Multimeter, Clampmeter, DC Resistance Meter, Power & Energy, Capacitance Meter</td>
+                            <td class="py-4 px-6 text-gray-800 font-mono">1 mV s/d 1000 V<br>0 mA s/d 1000 A<br>0 Ω s/d 1 GΩ<br>1 nF s/d 10 mF</td>
                         </tr>
                         <tr class="hover:bg-gray-50">
-                            <td class="py-4 px-6 text-navy font-bold flex items-center space-x-2">
-                                <span class="w-1.5 h-1.5 bg-gold rounded-full"></span>
-                                <span>Dimensi</span>
-                            </td>
-                            <td class="py-4 px-6 text-gray-600 font-normal">Micrometer, Caliper, Height Gauge, Bore Gauge, Dial Indicator</td>
-                            <td class="py-4 px-6 text-gray-800 font-mono">0 s/d 2000 mm</td>
-                        </tr>
-                        <tr class="bg-gray-50/50 hover:bg-gray-50">
-                            <td class="py-4 px-6 text-navy font-bold flex items-center space-x-2">
-                                <span class="w-1.5 h-1.5 bg-gold rounded-full"></span>
-                                <span>Kelembaban</span>
-                            </td>
-                            <td class="py-4 px-6 text-gray-600 font-normal">Hygrometer, Humidity Transmitter, Data Logger</td>
-                            <td class="py-4 px-6 text-gray-800 font-mono">0% s/d 100% RH</td>
-                        </tr>
-                        <tr class="hover:bg-gray-50">
-                            <td class="py-4 px-6 text-navy font-bold flex items-center space-x-2">
-                                <span class="w-1.5 h-1.5 bg-gold rounded-full"></span>
-                                <span>Volume & Aliran</span>
-                            </td>
-                            <td class="py-4 px-6 text-gray-600 font-normal">Flow Meter, Pipet Volumetrik, Buret, Labu Ukur</td>
-                            <td class="py-4 px-6 text-gray-500 font-normal">Sesuai standar</td>
-                        </tr>
-                        <tr class="bg-gray-50/50 hover:bg-gray-50">
                             <td class="py-4 px-6 text-navy font-bold flex items-center space-x-2">
                                 <span class="w-1.5 h-1.5 bg-gold rounded-full"></span>
                                 <span>Waktu & Frekuensi</span>
                             </td>
-                            <td class="py-4 px-6 text-gray-600 font-normal">Stopwatch, Timer, Frequency Counter</td>
-                            <td class="py-4 px-6 text-gray-800 font-mono">0 s/d 1000 Hz</td>
+                            <td class="py-4 px-6 text-gray-600 font-normal">Frequency Measuring Equipment, Frequency Meter, Tachometer</td>
+                            <td class="py-4 px-6 text-gray-800 font-mono">100 Hz s/d 10 MHz<br>240 rpm s/d 20.000 rpm</td>
                         </tr>
                     </tbody>
                 </table>
@@ -416,28 +496,28 @@
     </section>
 
     <!-- SECTION 04: KEUNGGULAN KAMI -->
-    <section class="bg-navy py-24 px-6 md:px-12 border-t border-white/5">
+    <section class="bg-[#eaf5fa] text-navy py-24 px-6 md:px-12 border-t border-navy/10">
         <div class="max-w-7xl mx-auto space-y-16">
             <div class="border-b border-white/10 pb-4" data-aos="fade-up">
-                <span class="text-xs font-bold tracking-widest text-white/40 font-condensed uppercase">04 — Keunggulan Kami</span>
+                <span class="text-xs font-bold tracking-widest text-navy/40 font-condensed uppercase">04 — Keunggulan Kami</span>
             </div>
 
             <!-- Grid Keunggulan Utama -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-x-12 gap-y-10">
                 <div class="space-y-3" data-aos="fade-up" data-aos-delay="100">
-                    <h4 class="text-base font-bold font-condensed uppercase tracking-wide text-white">Tertelusur ke SI</h4>
+                    <h4 class="text-base font-bold font-condensed uppercase tracking-wide text-navy">Tertelusur ke SI</h4>
                     <p class="text-gray-400 text-xs leading-relaxed font-light">
                         Seluruh hasil kalibrasi dapat ditelusuri ke Satuan Internasional (SI) melalui rantai ketelisuran tak terputus.
                     </p>
                 </div>
                 <div class="space-y-3" data-aos="fade-up" data-aos-delay="200">
-                    <h4 class="text-base font-bold font-condensed uppercase tracking-wide text-white">Meminimalisir Risiko</h4>
+                    <h4 class="text-base font-bold font-condensed uppercase tracking-wide text-navy">Meminimalisir Risiko</h4>
                     <p class="text-gray-400 text-xs leading-relaxed font-light">
                         Kalibrasi rutin menjamin alat ukur bekerja dalam toleransi, mencegah cacat produksi dan kerugian operasional.
                     </p>
                 </div>
                 <div class="space-y-3" data-aos="fade-up" data-aos-delay="300">
-                    <h4 class="text-base font-bold font-condensed uppercase tracking-wide text-white">Diakui Internasional</h4>
+                    <h4 class="text-base font-bold font-condensed uppercase tracking-wide text-navy">Diakui Internasional</h4>
                     <p class="text-gray-400 text-xs leading-relaxed font-light">
                         Sertifikat kalibrasi diakui secara global melalui jaringan kerja sama internasional KAN.
                     </p>
@@ -473,7 +553,7 @@
     </section>
 
     <!-- SECTION 06: UNDUH DOKUMEN RESMI -->
-    <section class="bg-navy-light py-24 px-6 md:px-12 border-t border-white/5">
+    <section class="bg-[#eaf5fa] text-navy py-24 px-6 md:px-12 border-t border-navy/10">
         <div class="max-w-7xl mx-auto space-y-12">
             <div class="border-b border-white/10 pb-4" data-aos="fade-up">
                 <span class="text-xs font-bold tracking-widest text-white/40 font-condensed uppercase">06 — Dokumen & Akreditasi</span>
@@ -580,8 +660,9 @@
                 <!-- Sisi Kanan: Form Kirim Pesan -->
                 <div class="lg:col-span-7 bg-white p-8 rounded-lg border border-gray-100 shadow-sm space-y-4 text-xs font-medium" data-aos="fade-left" data-aos-delay="300">
                     <h4 class="text-sm font-bold text-navy uppercase tracking-wide">Kirim Pesan</h4>
-                    <form id="contact-form" class="space-y-4" novalidate action="https://formspree.io/f/xnjknzwe" method="POST" accept-charset="UTF-8">
-                        <input type="hidden" name="_subject" value="Permintaan Kalibrasi dari Website NAM SAE INDONESIA">
+                    <form id="contact-form" class="space-y-4" novalidate action="https://api.web3forms.com/submit" method="POST" accept-charset="UTF-8">
+                        <input type="hidden" name="access_key" value="9636ceb3-ce81-420f-a1bf-eb2f7a642b85">
+                        <input type="hidden" name="subject" value="Permintaan Kalibrasi dari Website NAM SAE INDONESIA">
                         <div id="form-status" class="hidden rounded-md border px-4 py-3 text-sm"></div>
 
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -623,7 +704,9 @@
     <footer class="bg-navy-dark border-t border-white/5 py-8 px-6 md:px-12 text-[11px] text-gray-500 font-normal">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
             <div class="flex items-center space-x-2">
-                <div class="bg-white/10 text-white font-bold px-1.5 py-0.5 rounded text-[10px]">NAM</div>
+                <div class="flex h-7 w-7 items-center justify-center rounded-full bg-white p-1">
+                    <img src="assets/files/favicon-32x32.png" alt="Logo NAM Sae Indonesia" class="h-full w-full object-contain">
+                </div>
                 <p>© 2026 PT NAM Sae Indonesia • Terakreditasi KAN • SNI ISO/IEC 17025:2017</p>
             </div>
             <p>Bekasi, Jawa Barat, Indonesia</p>
@@ -634,7 +717,7 @@
     <a href="https://wa.me/6282111870221" target="_blank" class="fixed bottom-6 right-6 z-50 bg-[#25D366] hover:bg-[#20ba5a] text-white p-4 rounded-full shadow-xl flex items-center justify-center transition-all duration-300 hover:scale-110">
         <i class="fa-brands fa-whatsapp text-2xl"></i>
     </a>
-
+    
     <!-- AOS Animation JS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
@@ -729,20 +812,17 @@
             const formData = new FormData(form);
 
             try {
-                const response = await fetch(form.action, {
+                const response = await fetch('https://api.web3forms.com/submit', {
                     method: 'POST',
                     body: formData,
-                    headers: {
-                        'Accept': 'application/json'
-                    }
                 });
+                const result = await response.json();
 
-                if (response.ok) {
+                if (result.success) {
                     setStatus('Pesan berhasil dikirim! Kami akan segera menghubungi Anda.', 'success');
                     form.reset();
                 } else {
-                    const result = await response.json().catch(() => ({}));
-                    throw new Error(result.error || 'Gagal mengirim pesan.');
+                    throw new Error(result.message || 'Gagal mengirim pesan.');
                 }
             } catch (error) {
                 setStatus('Terjadi kesalahan saat mengirim. Silakan coba lagi.', 'error');
