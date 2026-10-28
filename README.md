@@ -3,7 +3,7 @@
 Website company profile interaktif yang dirancang khusus untuk Laboratorium Kalibrasi PT. NAM Sae Indonesia. Project ini dibuat untuk memberikan informasi layanan kalibrasi alat ukur secara profesional, cepat, dan akurat.
 
 ## 🚀 Live Demo
-Kunjungi website langsung di sini: [Link GitHub Pages Kamu di Sini]
+Kunjungi website langsung di sini: [https://exsanz1.github.io/NAM/]
 
 ## 🛠️ Teknologi yang Digunakan
 - HTML5
